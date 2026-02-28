@@ -16,11 +16,11 @@ namespace SimpleLibrary.S3
         private AmazonS3Client _S3Client = null;
 
         /// <summary>
-        /// 初始化 AWS 的 S3 服務
+        /// 🚀 初始化 AWS S3 服務
         /// </summary>
-        /// <param name="bucketName">AWS S3 的 Bucket Name 名稱不能重複</param>
-        /// <param name="accessKeyID">AWS 在 IAM 申請的 AccessKeyID</param>
-        /// <param name="secretAccessKey">AWS 在 IAM 申請的 SecretAccessKey</param>
+        /// <param name="bucketName">🪣 AWS S3 的儲存桶名稱 (Bucket Name，名稱不可重複)</param>
+        /// <param name="accessKeyID">🔑 AWS IAM 中申請的 AccessKeyID</param>
+        /// <param name="secretAccessKey">🔐 AWS IAM 中申請的 SecretAccessKey</param>
         public S3(string bucketName, string accessKeyID, string secretAccessKey, ContainerBuilder builder = null)
         {
             ILogger log_ = InitLogger(builder);            
@@ -33,10 +33,10 @@ namespace SimpleLibrary.S3
         }
 
         /// <summary>
-        /// 指定檔案上傳到 S3 服務，並回傳下載網址
+        /// ☁️ 將指定檔案上傳至 S3 服務，並回傳專屬的預先授權下載網址
         /// </summary>
-        /// <param name="fileFullPath">上傳檔案的路徑</param>
-        /// <returns>回傳下載網址</returns>
+        /// <param name="fileFullPath">📄 準備上傳的檔案完整路徑</param>
+        /// <returns>🔗 回傳可供下載的 URL 網址</returns>
         public string UploadFile(string fileFullPath)
         {
             string preSignedUrl_ = "";

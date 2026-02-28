@@ -24,9 +24,9 @@ namespace SimpleLibrary.Line
         }
 
         /// <summary>
-        /// 送出 Line 的通知訊息
+        /// 💬 傳送 Line Notify 的通知訊息
         /// </summary>
-        /// <param name="message">訊息的內容字串</param>
+        /// <param name="message">📝 欲傳送的訊息內容字串</param>
         public void Notify(string message)
         {
             string word_ = message;
@@ -51,13 +51,13 @@ namespace SimpleLibrary.Line
         }
 
         /// <summary>
-        /// 透過網頁方式傳送資訊給伺服器
+        /// 🌐 透過 HTTP 請求的方式將資訊傳送給伺服器
         /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="jsonDataBytes"></param>
-        /// <param name="contentType"></param>
-        /// <param name="method"></param>
-        /// <param name="authorization">授權碼</param>
+        /// <param name="uri">🔗 目標 API 的 Uri 網址</param>
+        /// <param name="jsonDataBytes">📦 要傳送的 JSON 轉換成的位元組陣列</param>
+        /// <param name="contentType">🏷️ 傳送內容的格式類型 (例如 application/json)</param>
+        /// <param name="method">📤 請求的方法 (例如 POST)</param>
+        /// <param name="authorization">🔑 API 操作需要的授權碼 (Bearer Token)</param>
         private static void SendRequest(Uri uri, byte[] jsonDataBytes, string contentType, string method, string authorization)
         {
             WebRequest req_ = WebRequest.Create(uri);

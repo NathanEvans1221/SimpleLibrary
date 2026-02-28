@@ -15,9 +15,9 @@ namespace SimpleLibrary.Zip
         }
 
         /// <summary>
-        /// 檢查並提示 S3 的下載網址不能有 ' 分號
+        /// 🔍 檢查並提示 S3 的下載網址內不可包含單引號 (')
         /// </summary>
-        /// <param name="filePath">上傳 S3 的檔案路徑</param>
+        /// <param name="filePath">☁️ 準備上傳至 S3 的檔案路徑</param>
         private void CheckS3Path(string filePath)
         {
             string path_ = filePath;
@@ -30,10 +30,10 @@ namespace SimpleLibrary.Zip
         }
 
         /// <summary>
-        /// 壓縮指定目錄為 zip 檔案
+        /// 🗜️ 將指定的目錄整體壓縮為 zip 檔案
         /// </summary>
-        /// <param name="outputZipPath">輸出的 zip 檔案路徑</param>
-        /// <param name="inputDirectory">要壓縮的目錄路徑</param>
+        /// <param name="outputZipPath">📁 壓縮完成後要輸出的 zip 檔案路徑</param>
+        /// <param name="inputDirectory">📂 準備進行壓縮的來源目錄路徑</param>
         public void ZipTo(string outputZipPath, string inputDirectory)
         {
             // 修正 S3 的下載網址不能有 ' 分號
@@ -49,11 +49,11 @@ namespace SimpleLibrary.Zip
         }
 
         /// <summary>
-        /// 壓縮指定目錄
+        /// 🗜️ 執行特定目錄的壓縮作業
         /// </summary>
-        /// <param name="rootFolder">指定要壓縮的目錄同 currentFolder</param>
-        /// <param name="currentFolder">指定要壓縮的目錄同 rootFolder</param>
-        /// <param name="zipStream">ZipOutputStream 的參考</param>
+        /// <param name="rootFolder">📂 指定要壓縮的根目錄 (起始目錄)</param>
+        /// <param name="currentFolder">📂 目前正在處理的目錄</param>
+        /// <param name="zipStream">📝 ZipOutputStream 的參考實例</param>
         private static void ZipFolder(string rootFolder, string currentFolder, ZipOutputStream zipStream)
         {
             string[] SubFolders_ = Directory.GetDirectories(currentFolder);
@@ -82,11 +82,11 @@ namespace SimpleLibrary.Zip
         }
 
         /// <summary>
-        /// 新增檔案到 zip 檔案內
+        /// 📄 將單一檔案加入至指定的 zip 壓縮檔內
         /// </summary>
-        /// <param name="zipStream"></param>
-        /// <param name="relativePath"></param>
-        /// <param name="file"></param>
+        /// <param name="zipStream">📝 ZipOutputStream 的參考實例</param>
+        /// <param name="relativePath">🛣️ 檔案在壓縮包內的相對路徑</param>
+        /// <param name="file">📄 準備加入的新檔案</param>
         private static void AddFileToZip(ZipOutputStream zipStream, string relativePath, string file)
         {
             byte[] buffer_ = new byte[4096];

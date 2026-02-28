@@ -7,7 +7,7 @@ namespace SimpleLibrary.Logger
     public class PrintLogger
     {
         /// <summary>
-        /// Logger 的 DI 物件容器
+        /// 📦 Logger 的 DI (依賴注入) 物件容器
         /// </summary>
         private List<ILogger> _Logger = new List<ILogger>() { new ConsoleLogger() };
 
@@ -38,7 +38,7 @@ namespace SimpleLibrary.Logger
     }
 
     /// <summary>
-    /// Logger 的介面
+    /// 🔌 Logger 的基礎介面
     /// </summary>
     public interface ILogger
     {
@@ -46,7 +46,7 @@ namespace SimpleLibrary.Logger
     }
 
     /// <summary>
-    /// 預設的 Console Logger
+    /// 💻 預設的主控台 (Console) 日誌記錄器
     /// </summary>
     public class ConsoleLogger : ILogger
     {
@@ -57,7 +57,7 @@ namespace SimpleLibrary.Logger
     }
 
     /// <summary>
-    /// 彩色的 Console Logger
+    /// 🎨 支援彩色的主控台 (Console) 日誌記錄器
     /// </summary>
     public class ColorfulLogger : ILogger
     {

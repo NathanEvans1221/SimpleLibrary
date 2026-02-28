@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace SimpleLibrary.FP
 {
     /// <summary>
-    /// Extension Method
-    /// 因為 IEnumerable 沒有 ForEach()，只有 List 才有 ForEach()，因此我們必須先 ToList()
-    /// 所以就來替 IEnumerable 打造一個 ForEach()
+    /// 🛠️ 擴充方法 (Extension Method)
+    /// 💡 由於 IEnumerable 本身並未提供 ForEach() 方法 (僅 List 擁有)，這會導致我們必須先呼叫 ToList()
+    /// ✨ 因此在這裡我們為 IEnumerable 打造一個專屬的 ForEach() 方法，提升程式撰寫的順暢度
     /// </summary>
     public static class Extensions
     {
