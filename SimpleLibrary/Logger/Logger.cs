@@ -27,7 +27,7 @@ namespace SimpleLibrary.Logger
             }
         }
 
-        protected void Print(string msg, Color color, LogLevel level = LogLevel.Info)
+        public void Print(string msg, Color color, LogLevel level = LogLevel.Info)
         {
             if (level < MinLevel) return;
 

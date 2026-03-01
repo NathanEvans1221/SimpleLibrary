@@ -6,7 +6,40 @@
             "command": "dotnet",
             "type": "process",
             "args": [
-                "build"
+                "build",
+                "SimpleLibrary.sln"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "pack",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "pack",
+                "SimpleLibrary/SimpleLibrary.csproj",
+                "-c",
+                "Debug",
+                "-o",
+                "./nupkg"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build and pack",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "SimpleLibrary.sln",
+                "&&",
+                "dotnet",
+                "pack",
+                "SimpleLibrary/SimpleLibrary.csproj",
+                "-c",
+                "Debug",
+                "-o",
+                "./nupkg"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -32,6 +65,33 @@
                 "Debug"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "SimpleLibrary.Tests/SimpleLibrary.Tests.csproj",
+                "--no-incremental"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "test"
+        },
+        {
+            "label": "test with coverage",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "SimpleLibrary.Tests/SimpleLibrary.Tests.csproj",
+                "--no-incremental",
+                "-p:CollectCoverage=true",
+                "-p:CoverletOutput=coverage/",
+                "-p:CoverletOutputFormat=opencover"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "test"
         }
     ]
 }

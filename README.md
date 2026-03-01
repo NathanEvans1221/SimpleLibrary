@@ -170,6 +170,62 @@ logger.Error("Error 訊息");
 
 ---
 
+## 🧪 單元測試 (Unit Tests)
+
+本專案使用 **xUnit** 進行單元測試，並使用 **Coverlet** 進行程式碼涵蓋率分析。
+
+### 執行測試
+
+```bash
+# 執行所有測試
+dotnet test SimpleLibrary.Tests/SimpleLibrary.Tests.csproj
+
+# 執行測試並產生涵蓋率報告
+dotnet test SimpleLibrary.Tests/SimpleLibrary.Tests.csproj -p:CollectCoverage=true -p:CoverletOutput=coverage/ -p:CoverletOutputFormat=opencover
+```
+
+### 涵蓋率報告
+
+涵蓋率報告會產生於 `SimpleLibrary.Tests/coverage/` 目錄，可使用以下工具檢視：
+- **Visual Studio** - 內建支援 opencover 格式
+- **ReportGenerator** - 將 opencover 轉換為 HTML 報告
+
+```bash
+# 安裝 ReportGenerator
+dotnet tool install --global dotnet-reportgenerator-globaltool
+
+# 產生 HTML 報告
+reportgenerator -reports:SimpleLibrary.Tests/coverage/coverage.opencover.xml -targetdir:coverage-report
+```
+
+### 測試涵蓋模組
+
+- **LoggerTests** - Logger 模組測試
+- **ZipTests** - Zip 壓縮/解壓縮測試
+- **S3Tests** - AWS S3 模組測試
+- **GMailTests** - GMail 發信測試
+- **LineTests** - Line 通知測試
+
+### ⚠️ 重要：執行測試前須先打包
+
+由於專案設定了 `GeneratePackageOnBuild`，測試須使用 NuGet 包參考。請先執行打包：
+
+```bash
+# 建置並打包 (每次更新代碼後須重新執行)
+dotnet build SimpleLibrary.sln
+dotnet pack SimpleLibrary/SimpleLibrary.csproj -c Debug -o ./nupkg
+
+# 執行測試 (必須加 --no-incremental)
+dotnet test SimpleLibrary.Tests/SimpleLibrary.Tests.csproj --no-incremental
+```
+
+或使用 VS Code 工作：
+- `build and pack` - 建置並打包
+- `test` - 執行測試
+- `test with coverage` - 執行測試並產生涵蓋率
+
+---
+
 ## 🔧 技術與套件相依 (Tech Stack & Dependencies)
 
 *   **Target Framework**: `.NET 10.0`
@@ -177,6 +233,9 @@ logger.Error("Error 訊息");
 *   **AWSSDK.S3 / Core**: AWS S3 整合。
 *   **Newtonsoft.Json**: 用於解析 Line 等等 REST API 的 JSON 傳遞資料。
 *   **SharpZipLib**: 提供底層的高效檔案壓縮機制。
+*   **xUnit**: 單元測試框架。
+*   **Moq**: 模擬物件框架。
+*   **Coverlet**: 程式碼涵蓋率工具。
 
 ---
 
